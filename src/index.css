@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* Bounce Hover Keyframes & Elastic Physics */
+@keyframes bounce-hover-spring {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-8px) scale(1.05);
+  }
+  45% {
+    transform: translateY(2px) scale(0.98);
+  }
+  65% {
+    transform: translateY(-4px) scale(1.02);
+  }
+  85% {
+    transform: translateY(1px) scale(0.99);
+  }
+  100% {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+@keyframes bounce-hover-gentle {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(1px);
+  }
+  75% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes bounce-icon-rebound {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  30% {
+    transform: scale(1.25) translateY(-4px);
+  }
+  60% {
+    transform: scale(0.95) translateY(1px);
+  }
+  80% {
+    transform: scale(1.08) translateY(-1px);
+  }
+}
+
+/* Bounce Hover Utility Classes (with expanded hit-test buffer to prevent flicker) */
+.bounce-hover {
+  display: inline-flex;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background-color 0.2s ease, border-color 0.2s ease;
+  will-change: transform;
+}
+
+.bounce-hover::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  pointer-events: auto;
+}
+
+.bounce-hover:hover {
+  animation: bounce-hover-spring 0.5s cubic-bezier(0.28, 0.84, 0.42, 1) forwards;
+  box-shadow: 0 12px 24px -4px rgba(0, 70, 37, 0.18), 0 4px 8px -2px rgba(0, 0, 0, 0.06);
+}
+
+.bounce-hover:active {
+  transform: translateY(1px) scale(0.96) !important;
+  transition: transform 0.1s ease;
+}
+
+.bounce-hover-nav {
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.34, 1.8, 0.64, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+  will-change: transform;
+}
+
+.bounce-hover-nav::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  pointer-events: auto;
+}
+
+.bounce-hover-nav:hover {
+  animation: bounce-hover-spring 0.48s cubic-bezier(0.28, 0.84, 0.42, 1) forwards;
+}
+
+.bounce-hover-nav:active {
+  transform: translateY(1px) scale(0.96) !important;
+}
+
+.bounce-hover-subtle {
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  will-change: transform;
+}
+
+.bounce-hover-subtle::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  pointer-events: auto;
+}
+
+.bounce-hover-subtle:hover {
+  animation: bounce-hover-gentle 0.4s ease-out forwards;
+}
+
+.bounce-hover-item {
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease;
+  will-change: transform;
+}
+
+.bounce-hover-item:hover {
+  transform: translateX(5px) scale(1.01);
+}
+
+.bounce-hover:hover .bounce-target-icon,
+.bounce-hover-nav:hover .bounce-target-icon,
+.bounce-hover-subtle:hover .bounce-target-icon {
+  animation: bounce-icon-rebound 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "우리동네 희망지원 포털",
+  "description": "2026년 우리동네 생활안정 지원금 지원 사업 공식 안내 및 온라인 간편 신청 포털",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
